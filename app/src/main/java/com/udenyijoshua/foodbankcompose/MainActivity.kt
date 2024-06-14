@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +22,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.rounded.Notifications
@@ -88,32 +91,42 @@ fun MainAppComponent(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
     ) {
+
         Column(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(16.dp)
+            modifier = modifier.fillMaxWidth()
         ) {
             TopAppBar(title = {
                 Text(
-                    text = "Foodbank.", color = ComposeColor.Black, fontWeight = FontWeight.Bold
+                    text = "Foodbank.", color = ComposeColor.White, fontWeight = FontWeight.Medium
                 )
             }, actions = {
                 Icon(
                     imageVector = Icons.Rounded.Notifications,
                     contentDescription = "notification",
-                    tint = ComposeColor.Black,
+                    tint = ComposeColor.White,
                     modifier = modifier.padding(end = 10.dp)
                 )
             }, colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = ComposeColor.Transparent
-            ), modifier = modifier.fillMaxWidth()
+                containerColor = ComposeColor(
+                    0,
+                    150,
+                    106
+                )
+            ), modifier = modifier
+                .fillMaxWidth()
             )
 
-            // Search Bar
+            Column(
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            ) {
 
-            SearchBar()
-            HorizontalCard()
-            ChipList()
+                SearchBar()
+                Spacer(modifier = Modifier.height(19.dp))
+                HorizontalCard()
+                ChipList()
+            }
         }
     }
 }
@@ -248,10 +261,17 @@ fun VerticalCard(modifier: Modifier = Modifier) {
 @Composable
 fun ChipList(modifier: Modifier = Modifier){
     Column {
-        Text(text = "Category")
+        Text(
+            text = "Categories",
+            modifier = modifier
+                .padding(top = 32.dp),
+            fontWeight = FontWeight.Medium,
+            fontSize = 19.5.sp
+        )
         
         Row (
-            horizontalArrangement = Arrangement.SpaceEvenly
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.horizontalScroll(rememberScrollState())
         ){
             categoryItems.forEach { 
                 Chip(chipData = it)
@@ -278,6 +298,12 @@ fun Chip(chipData: String, modifier: Modifier = Modifier) {
         } else {
             null
         },
+        modifier = modifier.padding(
+            start = 0.dp,
+            top = 4.dp,
+            end = 8.dp,
+            bottom = 4.dp
+        )
     )
 }
 
