@@ -120,12 +120,14 @@ fun MainAppComponent(modifier: Modifier = Modifier) {
                 modifier = modifier
                     .fillMaxSize()
                     .padding(16.dp)
+                    .verticalScroll(rememberScrollState())
             ) {
 
                 SearchBar()
                 Spacer(modifier = Modifier.height(19.dp))
                 HorizontalCard()
                 ChipList()
+                VerticalCard()
             }
         }
     }
@@ -255,7 +257,45 @@ fun ProgressBarWithText(modifier: Modifier = Modifier) {
 
 @Composable
 fun VerticalCard(modifier: Modifier = Modifier) {
+    OutlinedCard(
+        onClick = {},
+        modifier = modifier,
+        border = BorderStroke(1.dp, color = Color(216, 238, 233)),
+        colors = CardDefaults.outlinedCardColors(
+            containerColor = Color.Transparent
+        ),
+    ) {
 
+        Row(
+            modifier = modifier
+                .padding(16.dp)
+                .clip(RoundedCornerShape(12.dp))
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.hero_image1),
+                contentDescription = "Featured-Image-Desc",
+                modifier = modifier
+                    .clip(RoundedCornerShape(12.dp))
+                    .height(130.dp)
+                    .width(120.dp),
+                contentScale = ContentScale.Crop
+            )
+
+            Spacer(modifier = modifier.width(16.dp))
+
+            Column {
+                Text(
+                    text = "Fresh Food for Improving lives in Africa then he",
+                    fontWeight = FontWeight.Bold,
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .padding(top = 10.dp, bottom = 10.dp),
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+        }
+    }
 }
 
 @Composable
