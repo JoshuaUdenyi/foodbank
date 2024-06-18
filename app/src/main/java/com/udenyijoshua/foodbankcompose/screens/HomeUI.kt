@@ -1,19 +1,14 @@
 package com.udenyijoshua.foodbankcompose.screens
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,12 +18,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -37,12 +30,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -52,24 +42,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.BeyondBoundsLayout
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import com.udenyijoshua.foodbankcompose.R
-import com.udenyijoshua.foodbankcompose.navigation.BottomBar
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -255,7 +234,7 @@ fun VerticalCard(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ChipList(modifier: Modifier = Modifier){
+fun ChipList(modifier: Modifier = Modifier) {
     Column {
         Text(
             text = "Categories",
@@ -265,10 +244,10 @@ fun ChipList(modifier: Modifier = Modifier){
             fontSize = 19.5.sp
         )
 
-        Row (
+        Row(
             horizontalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier.horizontalScroll(rememberScrollState())
-        ){
+        ) {
             categoryItems.forEach {
                 Chip(chipData = it)
             }
@@ -280,7 +259,7 @@ fun ChipList(modifier: Modifier = Modifier){
 fun Chip(chipData: String, modifier: Modifier = Modifier) {
     var selected by remember { mutableStateOf(false) }
     FilterChip(
-        selected = selected ,
+        selected = selected,
         onClick = { selected = !selected },
         label = { Text(text = chipData) },
         leadingIcon = if (selected) {
@@ -302,7 +281,6 @@ fun Chip(chipData: String, modifier: Modifier = Modifier) {
         )
     )
 }
-
 
 
 val categoryItems = listOf<String>(
