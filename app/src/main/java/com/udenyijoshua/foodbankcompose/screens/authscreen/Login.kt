@@ -33,7 +33,7 @@ import com.udenyijoshua.foodbankcompose.ui.theme.FoodBankComposeTheme
 import javax.security.auth.login.LoginException
 
 @Composable
-fun Login(modifier: Modifier = Modifier){
+fun Login(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.fillMaxSize()
     ) {
@@ -46,7 +46,9 @@ fun Login(modifier: Modifier = Modifier){
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxWidth().clickable(enabled = false, null, null, {})
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(enabled = false, null, null, {})
             ) {
                 Text(
                     text = "FoodBank..",
@@ -59,11 +61,11 @@ fun Login(modifier: Modifier = Modifier){
                 )
             }
         }
-        Surface(){
+        Surface() {
             Column(
                 modifier = modifier.padding(start = 8.dp, end = 8.dp)
             ) {
-                var isChecked  by remember {
+                var isChecked by remember {
 
                     mutableStateOf(false)
                 }
@@ -75,36 +77,46 @@ fun Login(modifier: Modifier = Modifier){
 
                     Checkbox(
                         checked = isChecked,
-                        onCheckedChange = { isChecked = it}
+                        onCheckedChange = { isChecked = it }
                     )
                     Text(
                         text = "I agree to the Terms of Service"
                     )
                 }
-
-                if(isChecked){
-                    Button(
-                        onClick = { /*TODO*/ },
-                        enabled = true,
-                        modifier = modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 8.dp),
-                        shape = RoundedCornerShape(4.dp)
-                    ) {
-                        Text(text = "Continue with Google")
-                    }
-                }else{
-                    Button(
-                        onClick = { /*TODO*/ },
-                        enabled = false,
-                        modifier = modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 8.dp),
-                        shape = RoundedCornerShape(4.dp)
-                    ) {
-                        Text(text = "Continue with Google")
-                    }
+                //TODO: Improved this
+                Button(
+                    onClick = { /*TODO*/ },
+                    enabled = isChecked,
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp),
+                    shape = RoundedCornerShape(4.dp)
+                ) {
+                    Text(text = "Continue with Google")
                 }
+//                if(isChecked){
+//                    Button(
+//                        onClick = { /*TODO*/ },
+//                        enabled = true,
+//                        modifier = modifier
+//                            .fillMaxWidth()
+//                            .padding(bottom = 8.dp),
+//                        shape = RoundedCornerShape(4.dp)
+//                    ) {
+//                        Text(text = "Continue with Google")
+//                    }
+//                }else{
+//                    Button(
+//                        onClick = { /*TODO*/ },
+//                        enabled = false,
+//                        modifier = modifier
+//                            .fillMaxWidth()
+//                            .padding(bottom = 8.dp),
+//                        shape = RoundedCornerShape(4.dp)
+//                    ) {
+//                        Text(text = "Continue with Google")
+//                    }
+//                }
             }
 
         }
@@ -113,15 +125,9 @@ fun Login(modifier: Modifier = Modifier){
 }
 
 
-
-
-
-
-
-
 @Preview
 @Composable
-fun LoginPreview(){
+fun LoginPreview() {
     FoodBankComposeTheme {
         //StartDestination()
         Login()

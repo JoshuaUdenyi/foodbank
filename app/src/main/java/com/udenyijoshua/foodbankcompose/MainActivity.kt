@@ -14,8 +14,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FoodBankComposeTheme {
-                //StartDestination()
                 StartDestination()
+//                SignUp()
+//               Login()
             }
         }
     }
