@@ -94,29 +94,7 @@ fun Login(modifier: Modifier = Modifier) {
                 ) {
                     Text(text = "Continue with Google")
                 }
-//                if(isChecked){
-//                    Button(
-//                        onClick = { /*TODO*/ },
-//                        enabled = true,
-//                        modifier = modifier
-//                            .fillMaxWidth()
-//                            .padding(bottom = 8.dp),
-//                        shape = RoundedCornerShape(4.dp)
-//                    ) {
-//                        Text(text = "Continue with Google")
-//                    }
-//                }else{
-//                    Button(
-//                        onClick = { /*TODO*/ },
-//                        enabled = false,
-//                        modifier = modifier
-//                            .fillMaxWidth()
-//                            .padding(bottom = 8.dp),
-//                        shape = RoundedCornerShape(4.dp)
-//                    ) {
-//                        Text(text = "Continue with Google")
-//                    }
-//                }
+
             }
 
         }
@@ -129,7 +107,6 @@ fun Login(modifier: Modifier = Modifier) {
 @Composable
 fun LoginPreview() {
     FoodBankComposeTheme {
-        //StartDestination()
         Login()
     }
 }
